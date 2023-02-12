@@ -1,0 +1,66 @@
+<html>
+  <body>
+    <style>
+      .hamburger {
+        --size: 10;
+        --unit: 4px;
+        --color: black;
+        --line-height: 10%;
+        --line-width: 75%;
+        --spacing: 20%;
+        width: calc(var(--unit) * var(--size));
+        height: calc(var(--unit) * var(--size));
+        position: relative;
+      }
+      .hamburger .line {
+        display: block;
+        width: var(--line-width);
+        height: var(--line-height);
+        position: absolute;
+        left: calc(50% - var(--line-width) / 2);
+        background: var(--color);
+        border-radius: calc(2 * var(--unit));
+        transition: all linear 0.2s;
+      }
+
+      .hamburger .upper {
+        top: calc(50% - var(--line-height) / 2 - var(--spacing));
+      }
+
+      .hamburger.open .upper {
+        rotate: 45deg;
+        top: calc(50% - var(--line-height) / 2);
+      }
+
+      .hamburger .middle {
+        top: calc(50% - var(--line-height) / 2);
+      }
+
+      .hamburger.open .middle {
+        opacity: 0;
+      }
+
+      .hamburger .lower {
+        top: calc(50% - var(--line-height) / 2 + var(--spacing));
+      }
+
+      .hamburger.open .lower {
+        rotate: -45deg;
+        top: calc(50% - var(--line-height) / 2);
+      }
+    </style>
+
+    <button class="hamburger">
+      <span class="line upper"></span>
+      <span class="line middle"></span>
+      <span class="line lower"></span>
+    </button>
+
+    <script>
+      const hamburgerBtn = document.getElementsByClassName("hamburger")[0];
+      hamburgerBtn.addEventListener("click", () =>
+        hamburgerBtn.classList.toggle("open")
+      );
+    </script>
+  </body>
+</html>
